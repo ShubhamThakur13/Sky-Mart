@@ -39,7 +39,7 @@ const Login = () => {
     toast.success("User Logged In");
 
     reset();
-    navigate("/"); // redirect
+    navigate("/dashboard"); // redirect
   };
 
   return (
