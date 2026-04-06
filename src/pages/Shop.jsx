@@ -17,7 +17,7 @@ const Shop = () => {
   }, [])
   
   return (
-    <div className='grid grid-cols-5 gap-2 p-5 bg-black'>
+    <div className='grid grid-cols-4 gap-2 p-5 bg-black'>
       {Products.map((elem) => {
   return <ProductCard key={elem.id} product={elem} />;
 })}

@@ -1,10 +1,13 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { MyContext } from '../context/MycontextApplication';
 
 const Navbar = () => {
+   let {LoggedUser} = useContext(MyContext);
+ let navigate =   useNavigate();
     return (
         <div className='flex justify-between p-3 bg-black items-center text-white'>
-            <div className="logo">
+            <div className="logo" onClick={()=> navigate('/dashboard')}>
                 <div className="flex items-center gap-2">
                     <div className="bg-lime-400 text-black p-2 rounded-lg font-bold">
                         ⚡
@@ -22,9 +25,9 @@ const Navbar = () => {
             </div>
 
             <div className="last flex gap-3">
-                <p>Logged Name</p>
-                <p>Cart</p>
-                <p>Log Out</p>
+                <p className='p-2 border text-xs rounded-xl'>{LoggedUser.name}</p>
+                <p className='p-2 border text-xs rounded-xl active:scale-95 cursor-pointer'><i class="ri-shopping-cart-2-line"></i></p>
+                <p  className='p-2 border text-xs rounded-xl hover:bg-red-400 active:scale-95 cursor-pointer'><i class="ri-logout-box-r-line"></i></p>
             </div>
         </div>
     )

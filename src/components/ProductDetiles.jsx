@@ -105,7 +105,7 @@ const ProductDetiles = () => {
           {/* Navigation Buttons */}
           <div className="flex gap-4 pt-6">
             <button className="bg-gray-800 px-6 py-3 rounded-full">
-              Previous {id+1}
+              Previous
             </button>
 
             <button className="bg-lime-400 text-black px-6 py-3 rounded-full">
