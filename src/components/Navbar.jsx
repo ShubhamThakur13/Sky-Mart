@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { MyContext } from '../context/MycontextApplication';
+import { Home } from 'lucide-react';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
-   let {LoggedUser} = useContext(MyContext);
+   let {LoggedUser, setLoggedUser} = useContext(MyContext);
  let navigate =   useNavigate();
     return (
         <div className='flex justify-between p-3 bg-black items-center text-white'>
@@ -27,7 +29,12 @@ const Navbar = () => {
             <div className="last flex gap-3">
                 <p className='p-2 border text-xs rounded-xl'>{LoggedUser.name}</p>
                 <p className='p-2 border text-xs rounded-xl active:scale-95 cursor-pointer'><i class="ri-shopping-cart-2-line"></i></p>
-                <p  className='p-2 border text-xs rounded-xl hover:bg-red-400 active:scale-95 cursor-pointer'><i class="ri-logout-box-r-line"></i></p>
+                <p onClick={()=>
+                { navigate('/register')
+                    setLoggedUser(null)
+                    toast.success('Logged Out')
+                }
+                }  className='p-2 border text-xs rounded-xl hover:bg-red-400 active:scale-95 cursor-pointer'><i class="ri-logout-box-r-line"></i></p>
             </div>
         </div>
     )

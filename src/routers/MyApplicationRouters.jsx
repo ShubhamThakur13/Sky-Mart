@@ -61,7 +61,7 @@ const MyApplicationRouters = () => {
         },
 
         {
-            path: '/dashboard/product/:id',
+            path: '/dashboard/shop/product/:id',
             element: <ProductDetiles />
         }
     ]);

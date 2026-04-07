@@ -1,12 +1,18 @@
 import axios from "axios";
-import React, { useContext, useEffect } from "react";
+import React, { lazy, useContext, useEffect } from "react";
 import { MyContext } from "../context/MycontextApplication";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Star, Heart, Truck, ShieldCheck, RotateCcw } from "lucide-react";
+let Navbar = lazy(()=> import ('../components/Navbar'));
 
 const ProductDetiles = () => {
   let { id } = useParams();
-  let { Productdetiles, setProductdetiles } = useContext(MyContext);
+  let { Productdetiles, setProductdetiles, Products } = useContext(MyContext);
+  let navigate =  useNavigate();
+
+  let newnumber = Number(id)+1;
+  console.log(newnumber);
+  
 
   useEffect(() => {
     (async () => {
@@ -21,6 +27,8 @@ const ProductDetiles = () => {
   if (!Productdetiles) return <p className="text-white">Loading...</p>;
 
   return (
+    <>
+    <Navbar />
     <div className="bg-black min-h-screen text-white p-10">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         
@@ -104,11 +112,12 @@ const ProductDetiles = () => {
 
           {/* Navigation Buttons */}
           <div className="flex gap-4 pt-6">
-            <button className="bg-gray-800 px-6 py-3 rounded-full">
+            <button onClick={()=> navigate(`/dashboard/shop/product/${id-1 >= 0 ? id-1 : 0}`)} className="bg-gray-800 px-6 py-3 rounded-full">
               Previous
             </button>
 
-            <button className="bg-lime-400 text-black px-6 py-3 rounded-full">
+            <button onClick={()=> navigate(`/dashboard/shop/product/${newnumber+1 <= 800 ? newnumber+1 : 800}`)}
+             className="bg-lime-400 text-black px-6 py-3 rounded-full">
               Next
             </button>
           </div>
@@ -116,6 +125,7 @@ const ProductDetiles = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

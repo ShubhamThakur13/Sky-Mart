@@ -14,7 +14,7 @@ const ProductCard = ({product}) => {
         </span>
 
         <img
-        onClick={()=> navigate(`/dashboard/product/${product.id}`)}
+        onClick={()=> navigate(`/dashboard/shop/product/${product.id}`)}
           src={product.images}
           alt="watch"
           className="w-full h-48 object-contain mt-4"
